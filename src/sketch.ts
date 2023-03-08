@@ -9,12 +9,12 @@ function setup(): void {
       x: number,
       y: number
     }
-    const wellenlaenge_pixel = 20;
+    const wellenlaenge_pixel: number = 20;
     function d(x1: number, y1: number, x2: number, y2: number): number {
       return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2);
     }
     function wellen_funktion(ort: number): number {
-      const faktor = 2 * Math.PI / wellenlaenge_pixel;
+      const faktor: number = 2 * Math.PI / wellenlaenge_pixel;
       return Math.sin(ort * faktor);
     }
 
@@ -38,18 +38,10 @@ function setup(): void {
         console.log(`Progress: ${progress}%`);
       }
       for (let j: number = 0; j < height; j++) {
-        /*Helligkeit = Elongation
-        d1 = wellen_funktion(d(i, j, l1.x, l1.y));
-        d2 = wellen_funktion(d(i, j, l2.x, l2.y));
-        // console.log(d1 + d2);
-        */
-
-        //Helligkeit = konstruktive Interferenz
         delta1 = d(i, j, l1.x, l1.y);
         delta2 = d(i, j, l2.x, l2.y);
         gang_unterschied = Math.abs(delta1 - delta2);
         maximale_auslenkung = 1 + wellen_funktion(wellenlaenge_pixel * 0.75 + gang_unterschied);
-        // console.log(maximale_auslenkung);
 
         stroke(maximale_auslenkung * 127.5);
         point(i, j);
