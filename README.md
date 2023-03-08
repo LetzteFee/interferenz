@@ -2,7 +2,7 @@
 Download the [p5.js library](https://p5js.org/download/) file and copy it into the src folder
 
 # Compile
-Run 'tsc' in your terminal.
+Run `tsc` in your terminal.
 You need to be in the git folder or in one of its subfolders like src/
 
 # Run
