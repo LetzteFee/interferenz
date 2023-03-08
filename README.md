@@ -1,11 +1,9 @@
 # Install
-Download the p5.js file and copy it into the src folder
+Download the [p5.js library](https://p5js.org/download/) file and copy it into the src folder
 
 # Compile
-```
-$ tsc
-```
-You need to be in the git folder
+Run 'tsc' in your terminal.
+You need to be in the git folder or in one of its subfolders like src/
 
 # Run
 open the src/index.html file with a web browser like firefox
