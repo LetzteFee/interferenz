@@ -1,5 +1,5 @@
 # Showcase
-[](readme-assets/canvas.png)
+![canvas](readme-assets/canvas.png)
 
 # Guide
 ## Install
