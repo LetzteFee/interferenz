@@ -11,16 +11,7 @@ function render(wellenlaenge_pixel: number, l: Point[]): void {
     return Math.sin(ort * faktor);
   }
 
-  let progress: number = 0;
-  let current_progress: number;
-
   for (let i: number = 0; i < width; i++) {
-    current_progress = Math.round(i / width * 100);
-    if (progress !== current_progress) {
-      progress = current_progress;
-      console.log(`Progress: ${progress}%`);
-    }
-
     for (let j: number = 0; j < height; j++) {
       let sum: number = 0;
       // alle mit mit einem bestimmten Wert subtrahieren, sodass l[0] eine maximale Amplitude besitzt
