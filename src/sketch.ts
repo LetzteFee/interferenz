@@ -1,24 +1,14 @@
-function render(n: number = -1, lamda: number = -1): void {
-  let anzahl_sender: number = 2;
-  let wellenlaenge_pixel: number = 30;
-  if(n > 0) anzahl_sender = n;
-  if(lamda > 0) wellenlaenge_pixel = lamda;
-
-  interface Point {
-    x: number,
-    y: number
-  }
+interface Point {
+  x: number,
+  y: number
+}
+function render(wellenlaenge_pixel: number, l: Point[]): void {
   function d(x1: number, y1: number, x2: number, y2: number): number {
     return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2);
   }
   function wellen_funktion(ort: number): number {
     const faktor: number = 2 * Math.PI / wellenlaenge_pixel;
     return Math.sin(ort * faktor);
-  }
-
-  let l: Point[] = [];
-  for (let i: number = 0; i < anzahl_sender; i++) {
-    l[i] = { x: random(width), y: random(height) };
   }
 
   let progress: number = 0;
@@ -44,10 +34,22 @@ function render(n: number = -1, lamda: number = -1): void {
     }
   }
 }
+function init_render(n: number = -1, lamda: number = -1): void {
+  let anzahl_sender: number = 2;
+  let wellenlaenge_pixel: number = 30;
+  if (n > 0) anzahl_sender = n;
+  if (lamda > 0) wellenlaenge_pixel = lamda;
+
+  let sender: Point[] = [];
+  for (let i: number = 0; i < anzahl_sender; i++) {
+    sender[i] = { x: random(width), y: random(height) };
+  }
+  render(wellenlaenge_pixel, sender);
+}
 function setup(): void {
   createCanvas(800, 800);
   background(128);
   noFill();
   strokeWeight(2);
-  createInput("Render", "button").mouseClicked(render);
+  createInput("Render", "button").mouseClicked(init_render);
 }
