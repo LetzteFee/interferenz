@@ -2,6 +2,10 @@
 ![canvas](readme-assets/canvas.png)
 
 # Guide
+You need to have a typescript compiler installed. If you want to download p5.js with the command below you also need wget. Installation on Arch:
+```bash
+sudo pacman -S typescript wget
+```
 ## Install
 Download this repository and the [p5.js library](https://p5js.org/download/) file and copy it into the src folder.
 ```bash
