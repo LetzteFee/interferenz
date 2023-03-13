@@ -16,7 +16,7 @@ function render(wellenlaenge_pixel: number, l: Point[]): void {
       let sum: number = 1;
       // alle mit mit einem bestimmten Wert subtrahieren, sodass l[0] eine maximale Amplitude besitzt
       let subtrahent: number = (d(i, j, l[0].x, l[0].y) % wellenlaenge_pixel) - (wellenlaenge_pixel * 0.25);
-      for (let k = 1; k < l.length; k++) {
+      for (let k: number = 1; k < l.length; k++) {
         sum += wellen_funktion(d(i, j, l[k].x, l[k].y) - subtrahent);
       }
 
@@ -25,16 +25,17 @@ function render(wellenlaenge_pixel: number, l: Point[]): void {
     }
   }
 }
-function init_render(n: number = -1, lamda: number = -1): void {
-  let anzahl_sender: number = 2;
-  let wellenlaenge_pixel: number = 30;
-  if (n > 0) anzahl_sender = n;
-  if (lamda > 0) wellenlaenge_pixel = lamda;
+function init_render(): void {
+  //@ts-ignore
+  let anzahl_sender: number = Math.round(Number(document.getElementById("quantity").value));
+  //@ts-ignore
+  let wellenlaenge_pixel: number = Math.round(Number(document.getElementById("lamda").value));
 
   let sender: Point[] = [];
   for (let i: number = 0; i < anzahl_sender; i++) {
-    sender[i] = { x: random(width), y: random(height) };
+    sender.push({ x: random(width), y: random(height) });
   }
+  console.log(`Starting Rendering with these parameters: Sender: ${anzahl_sender}, lamda: ${wellenlaenge_pixel}`);
   render(wellenlaenge_pixel, sender);
 }
 function setup(): void {
@@ -42,5 +43,4 @@ function setup(): void {
   background(128);
   noFill();
   strokeWeight(2);
-  createInput("Render", "button").mouseClicked(init_render);
 }

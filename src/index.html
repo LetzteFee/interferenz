@@ -15,6 +15,11 @@
     </style>
   </head>
   <body>
+    <label for="quantity">Anzahl Sender:</label>
+    <input type="number" id="quantity" min="1" step="1" value="2">
+    <label for="lamda">Wellenlänge:</label>
+    <input type="number" id="lamda" min="1" step="1" value="50">
+    <input type="button" value="Render" onclick="init_render()"> 
     <script src="sketch.js"></script>
   </body>
 </html>
