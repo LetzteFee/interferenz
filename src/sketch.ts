@@ -13,10 +13,10 @@ function render(wellenlaenge_pixel: number, l: Point[]): void {
 
   for (let i: number = 0; i < width; i++) {
     for (let j: number = 0; j < height; j++) {
-      let sum: number = 0;
+      let sum: number = 1;
       // alle mit mit einem bestimmten Wert subtrahieren, sodass l[0] eine maximale Amplitude besitzt
       let subtrahent: number = (d(i, j, l[0].x, l[0].y) % wellenlaenge_pixel) - (wellenlaenge_pixel * 0.25);
-      for (let k = 0; k < l.length; k++) {
+      for (let k = 1; k < l.length; k++) {
         sum += wellen_funktion(d(i, j, l[k].x, l[k].y) - subtrahent);
       }
 
