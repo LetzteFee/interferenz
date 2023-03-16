@@ -30,6 +30,7 @@ function init_render(): void {
   let anzahl_sender: number = Math.round(Number(document.getElementById("quantity").value));
   //@ts-ignore
   let wellenlaenge_pixel: number = Math.round(Number(document.getElementById("lamda").value));
+  if(anzahl_sender < 2 || wellenlaenge_pixel <= 0) return;
 
   let sender: Point[] = [];
   for (let i: number = 0; i < anzahl_sender; i++) {
