@@ -2,6 +2,14 @@
   "compilerOptions": {
     "target": "es2016",
     "module": "commonjs",
-    "strict": true
+    "strict": true,
+    "allowUnreachableCode": false,
+    "noImplicitAny": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noPropertyAccessFromIndexSignature": true,
   }
 }
