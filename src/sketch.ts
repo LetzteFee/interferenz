@@ -10,8 +10,8 @@ class Point {
   }
 }
 function render(wellenlaenge_pixel: number, l: Point[]): void {
+  const faktor: number = 2 * Math.PI / wellenlaenge_pixel;
   function wellen_funktion(ort: number): number {
-    const faktor: number = 2 * Math.PI / wellenlaenge_pixel;
     return Math.sin(ort * faktor);
   }
 
@@ -19,6 +19,7 @@ function render(wellenlaenge_pixel: number, l: Point[]): void {
     for (let j: number = 0; j < height; j++) {
       let sum: number = 1;
       // alle mit mit einem bestimmten Wert subtrahieren, sodass l[0] eine maximale Amplitude besitzt
+      
       let subtrahent: number = (l[0].delta(i, j) % wellenlaenge_pixel) - (wellenlaenge_pixel * 0.25);
       for (let k: number = 1; k < l.length; k++) {
         sum += wellen_funktion(l[k].delta(i, j) - subtrahent);
