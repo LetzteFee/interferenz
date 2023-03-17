@@ -1,11 +1,15 @@
-interface Point {
-  x: number,
-  y: number
+class Point {
+  private readonly x: number;
+  private readonly y: number;
+  constructor(x: number, y: number) {
+    this.x = x;
+    this.y = y;
+  }
+  public delta(x: number, y: number): number {
+    return Math.sqrt((this.x - x) ** 2 + (this.y - y) ** 2);
+  }
 }
 function render(wellenlaenge_pixel: number, l: Point[]): void {
-  function d(x1: number, y1: number, x2: number, y2: number): number {
-    return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2);
-  }
   function wellen_funktion(ort: number): number {
     const faktor: number = 2 * Math.PI / wellenlaenge_pixel;
     return Math.sin(ort * faktor);
@@ -15,9 +19,9 @@ function render(wellenlaenge_pixel: number, l: Point[]): void {
     for (let j: number = 0; j < height; j++) {
       let sum: number = 1;
       // alle mit mit einem bestimmten Wert subtrahieren, sodass l[0] eine maximale Amplitude besitzt
-      let subtrahent: number = (d(i, j, l[0].x, l[0].y) % wellenlaenge_pixel) - (wellenlaenge_pixel * 0.25);
+      let subtrahent: number = (l[0].delta(i, j) % wellenlaenge_pixel) - (wellenlaenge_pixel * 0.25);
       for (let k: number = 1; k < l.length; k++) {
-        sum += wellen_funktion(d(i, j, l[k].x, l[k].y) - subtrahent);
+        sum += wellen_funktion(l[k].delta(i, j) - subtrahent);
       }
 
       stroke(Math.abs(sum / l.length) * 255);
@@ -30,11 +34,11 @@ function init_render(): void {
   let anzahl_sender: number = Math.round(Number(document.getElementById("quantity").value));
   //@ts-ignore
   let wellenlaenge_pixel: number = Math.round(Number(document.getElementById("lamda").value));
-  if(anzahl_sender < 2 || wellenlaenge_pixel <= 0) return;
+  if (anzahl_sender < 2 || wellenlaenge_pixel <= 0) return;
 
   let sender: Point[] = [];
   for (let i: number = 0; i < anzahl_sender; i++) {
-    sender.push({ x: random(width), y: random(height) });
+    sender.push(new Point(random(width), random(height)));
   }
   console.log(`Starting Rendering with these parameters: Sender: ${anzahl_sender}, lamda: ${wellenlaenge_pixel}`);
   render(wellenlaenge_pixel, sender);
