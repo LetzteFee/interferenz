@@ -41,7 +41,6 @@ function init_render(): void {
   for (let i: number = 0; i < anzahl_sender; i++) {
     sender.push(new Point(random(width), random(height)));
   }
-  console.log(`Starting Rendering with these parameters: Sender: ${anzahl_sender}, lamda: ${wellenlaenge_pixel}`);
   render(wellenlaenge_pixel, sender);
 }
 function setup(): void {
