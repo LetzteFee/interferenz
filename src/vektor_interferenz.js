@@ -27,9 +27,8 @@ function setup() {
   background(0);
   strokeWeight(2);
 
-
-vecA = new OrtsVektor(e, width / 2 - gitter_konstante, height / 2);
-vecB = new OrtsVektor(e, width / 2 + gitter_konstante, height / 2);
+  vecA = new OrtsVektor(e, width / 2 - gitter_konstante, height / 2);
+  vecB = new OrtsVektor(e, width / 2 + gitter_konstante, height / 2);
 }
 function draw() {
   if (i < width) {
@@ -50,4 +49,3 @@ function render() {
     point(i, j);
   }
 }
-
